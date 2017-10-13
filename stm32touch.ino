@@ -1,13 +1,13 @@
 #define SACRIFICIAL_ANALOG_PIN PA6 // this will be grounded; make sure this doesn't cause a short-circuit
 
 int32_t touch(int pin, int samples) {
-  uint32_t total = 0;
+  int32_t total = 0;
   for (int i=0; i<samples; i++) {
     pinMode(pin, INPUT_PULLUP);
     pinMode(SACRIFICIAL_ANALOG_PIN, OUTPUT);
     digitalWrite(SACRIFICIAL_ANALOG_PIN, 0);
     delayMicroseconds(50);
-    analogRead(PSACRIFICIAL_ANALOG_PIN);
+    analogRead(SACRIFICIAL_ANALOG_PIN);
     pinMode(pin, INPUT_ANALOG);
     total += analogRead(pin);
   }
